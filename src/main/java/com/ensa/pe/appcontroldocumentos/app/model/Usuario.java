@@ -54,7 +54,7 @@ public class Usuario {
     @ManyToOne(fetch=FetchType.EAGER, optional = false)
     @JoinColumn(name = "rol_id")
     private Rol rol;
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String usuario;
     @Column(length = 60)
     private String contrasenia;

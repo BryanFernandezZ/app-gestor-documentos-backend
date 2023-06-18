@@ -43,26 +43,26 @@ public class AppControlSeguimientoDocumentosApplication implements CommandLineRu
 
     @Override
     public void run(String... args) throws Exception {
-        //Roles
-        crearRoles();
-
-        //Areas
-        crearAreas();
-
-        //Tipo de Identidades
-        crearTipoIdentidades();
-
-        //Usuarios
-        crearUsuarios();
-
-        //Categorias
-        crearCategorias();
-
-        //Tipos de Documentos
-        crearTipoDocumentos();
-
-        //Documentos
-        crearDocumentos();
+//        //Roles
+//        crearRoles();
+////
+////        //Areas
+//        crearAreas();
+////
+////        //Tipo de Identidades
+//        crearTipoIdentidades();
+////
+////        //Usuarios
+////        crearUsuarios();
+////
+////        //Categorias
+//        crearCategorias();
+//
+//        //Tipos de Documentos
+//        crearTipoDocumentos();
+//
+//        //Documentos
+//        crearDocumentos();
     }
 
     private void crearRoles() {
@@ -113,49 +113,49 @@ public class AppControlSeguimientoDocumentosApplication implements CommandLineRu
                         .usuario("czapata")
                         .contrasenia(encoder.encode("Czapata$"))
                         .isActive(true)
-                        .build(),
-
-                Usuario.builder()
-                        .nombre("Brayan Robert")
-                        .apellidos("Fernandez Zabaleta")
-                        .tipoIdentidad(
-                                TipoIdentidad.builder().id(Long.valueOf(1)).build()
-                        )
-                        .nroIdentidad("75841246")
-                        .telefono("971138918")
-                        .correo("bryan@correo.com")
-                        .avatar(getAvatar("temporal_profile_picture.jpg"))
-                        .area(
-                                Area.builder().id(Long.valueOf(1)).build()
-                        )
-                        .rol(
-                                Rol.builder().id(Long.valueOf(2)).build()
-                        )
-                        .usuario("brayan123")
-                        .contrasenia(encoder.encode("Brayan123$"))
-                        .isActive(true)
-                        .build(),
-
-                Usuario.builder()
-                        .nombre("Juan Marcos")
-                        .apellidos("Garcia Mendez")
-                        .tipoIdentidad(
-                                TipoIdentidad.builder().id(Long.valueOf(1)).build()
-                        )
-                        .nroIdentidad("75841246")
-                        .telefono("971138918")
-                        .correo("bryan@correo.com")
-                        .avatar(getAvatar("temporal_profile_picture.jpg"))
-                        .area(
-                                Area.builder().id(Long.valueOf(1)).build()
-                        )
-                        .rol(
-                                Rol.builder().id(Long.valueOf(2)).build()
-                        )
-                        .usuario("juan123")
-                        .contrasenia(encoder.encode("Juan123$"))
-                        .isActive(true)
                         .build()
+
+//                Usuario.builder()
+//                        .nombre("Brayan Robert")
+//                        .apellidos("Fernandez Zabaleta")
+//                        .tipoIdentidad(
+//                                TipoIdentidad.builder().id(Long.valueOf(1)).build()
+//                        )
+//                        .nroIdentidad("75841246")
+//                        .telefono("971138918")
+//                        .correo("bryan@correo.com")
+//                        .avatar(getAvatar("temporal_profile_picture.jpg"))
+//                        .area(
+//                                Area.builder().id(Long.valueOf(1)).build()
+//                        )
+//                        .rol(
+//                                Rol.builder().id(Long.valueOf(2)).build()
+//                        )
+//                        .usuario("brayan123")
+//                        .contrasenia(encoder.encode("Brayan123$"))
+//                        .isActive(true)
+//                        .build(),
+//
+//                Usuario.builder()
+//                        .nombre("Juan Marcos")
+//                        .apellidos("Garcia Mendez")
+//                        .tipoIdentidad(
+//                                TipoIdentidad.builder().id(Long.valueOf(1)).build()
+//                        )
+//                        .nroIdentidad("75841246")
+//                        .telefono("971138918")
+//                        .correo("bryan@correo.com")
+//                        .avatar(getAvatar("temporal_profile_picture.jpg"))
+//                        .area(
+//                                Area.builder().id(Long.valueOf(1)).build()
+//                        )
+//                        .rol(
+//                                Rol.builder().id(Long.valueOf(2)).build()
+//                        )
+//                        .usuario("juan123")
+//                        .contrasenia(encoder.encode("Juan123$"))
+//                        .isActive(true)
+//                        .build()
         );
 
         usuarios.forEach(usuarioRepository::save);

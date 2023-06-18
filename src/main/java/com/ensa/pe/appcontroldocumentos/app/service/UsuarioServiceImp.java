@@ -78,4 +78,11 @@ public class UsuarioServiceImp implements UsuarioService {
                         .build())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public int obtenerCantidadUsuarios() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        int totalUsuarios = usuarios.size();
+        return totalUsuarios;
+    }
 }

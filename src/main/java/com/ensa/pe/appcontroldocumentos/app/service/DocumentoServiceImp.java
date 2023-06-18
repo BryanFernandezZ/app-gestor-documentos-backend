@@ -159,4 +159,11 @@ public class DocumentoServiceImp implements DocumentoService {
 
         documentoRepository.saveAndFlush(documento);
     }
+
+    @Override
+    public int obtenerCantidadDocumentos() {
+        List<Documento> documentos = documentoRepository.findAll();
+        int totalDocumentos = documentos.size();
+        return totalDocumentos;
+    }
 }

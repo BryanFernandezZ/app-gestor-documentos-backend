@@ -12,8 +12,7 @@ public interface UsuarioService {
     void guardarUsuario(UsuarioRequestDTO usuarioRequestDTO);
     void actualizarUsuario(UsuarioRequestDTO usuarioRequestDTO);
     void eliminarUsuario(Long id);
-
     UsuarioResponseAuxDTO verUsuarioAux(Long id);
-
     List<UsuarioResponseAuxDTO> obtenerUsuariosDeArea(Long areaId);
+    int obtenerCantidadUsuarios();
 }

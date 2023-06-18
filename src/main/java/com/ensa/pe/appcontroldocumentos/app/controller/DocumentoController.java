@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/v1/documento")
@@ -104,5 +106,14 @@ public class DocumentoController {
         if (id == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         documentoService.finalizarDocumento(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //TODO: METODOS DE CONTEO
+    @RequestMapping(path = "/totalDocumentos", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerCantidadDocumentos(){
+        int totalDocumentos = documentoService.obtenerCantidadDocumentos();
+        Map<String, Integer> map = new HashMap<>();
+        map.put("totalDocumentos", totalDocumentos);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

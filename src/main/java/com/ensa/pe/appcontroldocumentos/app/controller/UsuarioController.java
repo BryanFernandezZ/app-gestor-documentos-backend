@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/v1/usuario")
@@ -119,10 +121,12 @@ public class UsuarioController {
         RolRequestDTO rolRequestDTO = RolRequestDTO.builder().rol(rol).build();
         rolRequestDTO.setCodigo(rol.equals("Supervisor") ? Long.valueOf(1) : Long.valueOf(2));
 
-        UsuarioRequestDTO usuarioRequestDTO = UsuarioRequestDTO.builder()
+        String contra = contrasenia.startsWith("$2a$") ? contrasenia : encoder.encode(contrasenia);
+
+                UsuarioRequestDTO usuarioRequestDTO = UsuarioRequestDTO.builder()
                 .codigo(codigo).nombre(nombre).apellidos(apellidos).tipoIdentidad(tipoIdentidadRequestDTO)
                 .nroIdentidad(nroIdentidad).telefono(telefono).correo(correo).avatar(avatar).area(areaRequestDTO)
-                .rol(rolRequestDTO).usuario(usuario).contrasenia(encoder.encode(contrasenia)).isActive(Boolean.parseBoolean(active))
+                .rol(rolRequestDTO).usuario(usuario).contrasenia(contra).isActive(Boolean.parseBoolean(active))
                 .build();
 
         usuarioService.actualizarUsuario(usuarioRequestDTO);
@@ -141,5 +145,12 @@ public class UsuarioController {
         if(id == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         List<UsuarioResponseAuxDTO> response = usuarioService.obtenerUsuariosDeArea(id);
         return ResponseEntity.ok(response);
+    }
+    @RequestMapping(path = "/totalUsuarios", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerCantidadUsuarios(){
+        int totalUsuarios = usuarioService.obtenerCantidadUsuarios();
+        Map<String, Integer> map = new HashMap<>();
+        map.put("totalUsuarios", totalUsuarios);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

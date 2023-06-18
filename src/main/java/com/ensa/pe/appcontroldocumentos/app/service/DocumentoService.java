@@ -17,4 +17,6 @@ public interface DocumentoService {
     void derivarDocumento(Long idDocumento, Long idUsuarioAsignado);
     void notificarDocumento(Long idDocumento, String nombreApellidoUsuario, MultipartFile file);
     void finalizarDocumento(Long idDocumento);
+
+    int obtenerCantidadDocumentos();
 }
